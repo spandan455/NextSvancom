@@ -10,6 +10,10 @@ body{
     min-height: 100vh;
 }
 
+.jaldi{
+    font-family: Jaldi;
+}
+
 .text-gradient{
     background: linear-gradient(135deg , #4ade80 , #3b82f6);
     -webkit-text-fill-color: transparent;
