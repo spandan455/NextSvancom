@@ -1,0 +1,91 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Description": {
+      "type": "richtext",
+      "default": "Description for this product isn't avilable"
+    },
+    "Price": {
+      "type": "integer",
+      "required": true,
+      "min": 1
+    },
+    "Company": {
+      "type": "enumeration",
+      "enum": [
+        "Varshaa",
+        "Svancom",
+        "Goveshna",
+        "All"
+      ],
+      "default": "All"
+    },
+    "Quantity": {
+      "type": "integer",
+      "required": true
+    },
+    "Size": {
+      "type": "enumeration",
+      "enum": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
+      "default": "Medium"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Discount": {
+      "type": "integer",
+      "max": 100
+    },
+    "Rating": {
+      "type": "decimal",
+      "max": 5,
+      "required": true,
+      "default": 3
+    },
+    "linkToAmazon": {
+      "type": "string",
+      "required": true,
+      "default": "https://amazon.com"
+    },
+    "linkToIndiaMart": {
+      "type": "string",
+      "default": "https://indiamart.in",
+      "required": true
+    },
+    "Tags": {
+      "type": "string",
+      "required": false,
+      "default": "product "
+    },
+    "Usage": {
+      "type": "integer",
+      "required": false,
+      "min": 0
+    }
+  }
+}

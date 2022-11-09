@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact us</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./tilt.js"></script>
+  </head>
+  <body class="overflow-hidden">
+    <nav class="h-18 w-[100vw] flex items-center text-center">
+      <h1 class="text-gradient hidden sm:flex justify-start text-3xl lg:w-[10vw] md:w-[15vw] w-[50vw] p-2">
+        Svancom
+      </h1>
+      <div
+        class="pages justify-center sm:justify-start  sm:flex-row-reverse sm:ml-auto w-[100vw] sm:w-[85vw] lg:w-[90vw] flex p-4 sm:mr-0 lg:mr-10 items-center text-center">
+        <a class="a w-[20vw] sm:w-[15vw] lg:w-[10vw] text-white text-sm sm:text-lg hover:scale-105 transition delay-150 duration-300 ml-2 lg:ml-4" href="https://spandan455.github.io/Svancom/services.html">Services</a>
+        <a class="a w-[20vw] sm:w-[15vw] lg:w-[10vw] text-white text-sm sm:text-lg hover:scale-105 transition delay-150 duration-300 ml-2 lg:ml-4" href="https://spandan455.github.io/Svancom/contact.html">Contact</a>
+        <a class="a w-[20vw] sm:w-[15vw] lg:w-[10vw] text-white text-sm sm:text-lg hover:scale-105 transition delay-150 duration-300 ml-2 lg:ml-4" href="https://spandan455.github.io/Svancom/products.html">Products</a>
+        <a class="a w-[20vw] sm:w-[15vw] lg:w-[10vw] text-white text-sm sm:text-lg hover:scale-105 transition delay-150 duration-300 ml-2 lg:ml-4" href="https://spandan455.github.io/Svancom/index.html">Home</a>
+      </div>
+
+    </nav>
+    <div
+      class="container flex justify-center flex-col items-center text-center"
+    >
+    <div
+    class="card h-[80vh] mt-[5vw] w-[90vw] sm:w-[40vw] bg-half rounded-lg shadow-lg flex flex-col justify-center items-center text-center"
+    data-tilt
+    data-tilt-max="50"
+    data-tilt-speed="400"
+    data-tilt-perspective="750"
+    >
+    <h1 class="light pt-2 text-gradient font-extralight text-2xl">Contact Us</h1>
+    <form class="flex flex-col h-[100%] justify-center items-center text-center">
+          <div
+            class="inp flex justify-center items-center text-center flex-col space-y-2"
+          >
+            <input
+              class="placeholder:text-slate-300 p-2 rounded-md bg-half2"
+              placeholder="Enter Your Name"
+              type="text"
+            />
+            <input
+              class="placeholder:text-slate-300 p-2 rounded-md bg-half2"
+              placeholder="Enter Your Email"
+              type="email"
+            />
+            <input
+              class="placeholder:text-slate-300 p-2 rounded-md bg-half2"
+              placeholder="Enter Your Phone Number"
+              type="number"
+            />
+            <input
+              class="placeholder:text-slate-300 p-2 rounded-md bg-half2"
+              placeholder="Enter Your Subject"
+              type="text"
+            />
+            <textarea placeholder="Enter Your Content" class="placeholder:text-slate-300 w-[75%] p-2 rounded-md bg-half2"  id="" cols="30" rows="3"></textarea>
+        </div>
+        <button
+          class=" btn shadow-xl  shadow-blue-500/50  hover:scale-105 transition delay-150 duration-300 text-lg px-4 py-2 mt-6 "
+        >
+          Submit
+        </button>
+        </form>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      VanillaTilt.init(document.querySelector(".card"), {
+        max: 25,
+        speed: 400,
+      });
+    </script>
+  </body>
+</html>
