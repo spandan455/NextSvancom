@@ -1,23 +1,16 @@
-import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/Link'
 import styles from '../styles/Home.module.css'
-import Footer from './components/footer'
-import { useEffect } from 'react'
-
 import { useState } from 'react';
-
-import Navbar from "./components/navbar"
+import Navbar from './components/Navbar';
 
 export default function Home(props) {
 
-  const [search, setSearch] = useState("")
+  const [Search, setSearch] = useState("")
   const handleChange = (str) => {
     setSearch(str); 
       
       document.querySelector('.tohide').className = 'tohide hidden'
-    
-     
-    
     
   }
   return (
@@ -39,29 +32,29 @@ export default function Home(props) {
         <p>Welcome To Sri Satyavrat Industry.It is company that offers organic, agricultaral, domestic and industrial products.This Company provides Services like Water tank or pipeline cleaning.Also it provides conseltancy.</p>
       </h1>
       <div className="btngrp">
-      <button className="btn mx-2  shadow-blue-500/50 shadows text-white hover:scale-105 transition delay-150 duration-300 text-lg p-2 rounded-lg z-50" ><a href="/services"> Why Our Products</a></button>
-      <button className="btn mx-2 shadow-blue-500/50 shadows text-white hover:scale-105 transition delay-150 duration-300 text-lg p-2 rounded-lg "><a href="/product">View All Products</a></button>
+      <button className="btn mx-2  shadow-blue-500/50 shadows text-white hover:scale-105 transition delay-150 duration-300 text-lg p-2 rounded-lg z-50" ><Link href="/Services"> Why Our Products</Link></button>
+      <button className="btn mx-2 shadow-blue-500/50 shadows text-white hover:scale-105 transition delay-150 duration-300 text-lg p-2 rounded-lg "><Link href="/Product">View All Products</Link></button>
       </div>
     </div>
     </div>
-    <div options={{ max : 50 }} className=" flex flex-wrap Tilt justify-center flex-col lg:flex-row items-center mt-[20vh] lg:mt-[10vh]">
+    <div  className=" flex flex-wrap Tilt justify-center flex-col lg:flex-row items-center mt-[20vh] lg:mt-[10vh]">
       
         {props.products.map((item)=>{
           let i = item.attributes;
-          if(i.Title.includes(search)){
+          if(i.Title.includes(Search)){
           return(
             <div key={i.Title}  className="cards   Tilt-inner lg:mx-[1vw]  overflow-hidden h-[90vh] lg:h-[60vh] my-[10vh] w-90vw lg:w-[30vw] flex-col bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg shadow-lg flex justify-center items-center text-center"  >
 
           <div className="img flex justify-center  items-center text-center overflow-hidden">
-            <img className="lg:h-[15vw] h-[40vh] " src={`/${i.Image.data && i.Image.data.attributes.name}`} alt="Image" />
+            <Image className="lg:h-[40vw] h-[40vh] " width='50vw' height='100vw' src={`/${i.Image.data && i.Image.data.attributes.name}`} alt="Image" />
           </div>
           <div className="price font-extralight text-4xl text-gradient">{i.Title}</div>
           <div className="content text-gradient p-0 m-0 text-[17px]">{i.Description}</div>
           <div className="cols flex flex-col p-5 justify-center items-center text-center ">
             <div className="price font-extralight text-2xl  text-gradient"><span className="text-lg align-top font-extrabold">₹</span>{i.Price}</div>
             <div className="flex flex-row">
-            <div className="btn p-2  hover:scale-105 transition delay-150 duration-300 z-50">View Product</div>
-              <div className="btn p-2  hover:scale-105 transition delay-150 duration-300 z-50 " >Buy product</div>
+            <div className="btn p-2  hover:scale-105 transition delay-150 duration-300 z-50"><Link href={i.linkToIndiaMart}>Buy on Indiamart</Link> </div>
+              <div className="btn p-2  hover:scale-105 transition delay-150 duration-300 z-50 " ><Link href={i.linkToAmazon}>Buy on Amazon</Link> </div>
               </div>
           </div>
       </div>
@@ -77,8 +70,8 @@ export default function Home(props) {
 export async function getServerSideProps() {
 
 
-  let link = `http://localhost:1337/api/products?filters[Title][$startsWith]=&populate=*`
-  let headers = {Authorization : "Bearer fec346192666a76c4d4493ba87d1b10b8e84e2ba76f96b768ff4473aec6acde0d8d16521f559fa5c57db58f62b3dc50caf34de696a820d0b823d903320abd7632a197c1a9e4c401a56c48860e3bcc7b3d25179ff191432b435a836c91c089224731fc74a780c9d63acbe07b312d6818c09df333789048ed0f2b87748bf648db9"}
+  let link = `${process.env.ST_URL}/api/products?populate=*`
+  let headers = {Authorization : process.env.ST_CODE}
   let a = await fetch(link , {headers : headers})
   let productss = await a.json()
   let products = productss.data;
